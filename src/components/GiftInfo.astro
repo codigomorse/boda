@@ -1,0 +1,228 @@
+---
+const bankAccounts = {
+  pesos: {
+    title: "Cuenta en Pesos (UYU)",
+    santander: "1200674924",
+    otrosBancos: "0005001200674924"
+  },
+  dolares: {
+    title: "Cuenta en Dólares (USD)",
+    santander: "5200814772",
+    otrosBancos: "0005005200814772"
+  }
+};
+---
+
+<section id="gifts" class="gifts-section">
+  <div class="container">
+    <h2 class="heading section-title text-center">Mesa de Regalos</h2>
+    <p class="gifts-description text-center">
+      Tu presencia es nuestro mejor regalo... pero si querés ayudarnos con nuestra luna de miel te dejamos debajo nuestras cuentas, Gracias!!
+    </p>
+    
+    <div class="gifts-container">
+      <div class="gift-option">
+        <div class="gift-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="8" width="18" height="4" rx="1"></rect>
+            <path d="M12 8v13"></path>
+            <path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"></path>
+            <path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5"></path>
+          </svg>
+        </div>
+        <h3>Banco Santander</h3>
+        <p class="gift-subtitle">{bankAccounts.pesos.title}</p>
+        
+        <div class="bank-details">
+          <div class="transfer-section">
+            <p class="transfer-title">Transferencias dentro de Santander</p>
+            <p><strong>Cuenta:</strong> {bankAccounts.pesos.santander}</p>
+            <p><strong>Moneda:</strong> UYU</p>
+            <p><strong>Sucursal:</strong> 05 - Ombu</p>
+          </div>
+          <div class="transfer-section">
+            <p class="transfer-title">Transferencias desde otros bancos</p>
+            <p><strong>Cuenta:</strong> {bankAccounts.pesos.otrosBancos}</p>
+            <p><strong>Moneda:</strong> UYU</p>
+          </div>
+        </div>
+
+        <button class="btn btn-outline copy-btn" data-copy={bankAccounts.pesos.santander}>
+          Copiar cuenta Santander
+        </button>
+      </div>
+
+      <div class="gift-option">
+        <div class="gift-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+        </div>
+        <h3>Banco Santander</h3>
+        <p class="gift-subtitle">{bankAccounts.dolares.title}</p>
+        
+        <div class="bank-details">
+          <div class="transfer-section">
+            <p class="transfer-title">Transferencias dentro de Santander</p>
+            <p><strong>Cuenta:</strong> {bankAccounts.dolares.santander}</p>
+            <p><strong>Moneda:</strong> USD</p>
+            <p><strong>Sucursal:</strong> 05 - Ombu</p>
+          </div>
+          <div class="transfer-section">
+            <p class="transfer-title">Transferencias desde otros bancos</p>
+            <p><strong>Cuenta:</strong> {bankAccounts.dolares.otrosBancos}</p>
+            <p><strong>Moneda:</strong> USD</p>
+          </div>
+        </div>
+
+        <button class="btn btn-outline copy-btn" data-copy={bankAccounts.dolares.santander}>
+          Copiar cuenta Santander
+        </button>
+      </div>
+    </div>
+
+    <p class="gifts-thanks text-center">
+      ¡Mil gracias por tu generosidad!
+    </p>
+  </div>
+</section>
+
+<script>
+  const copyButtons = document.querySelectorAll('.copy-btn');
+  
+  copyButtons.forEach(button => {
+    button.addEventListener('click', async () => {
+      const textToCopy = button.getAttribute('data-copy') || '';
+      
+      try {
+        await navigator.clipboard.writeText(textToCopy);
+        const originalText = button.textContent;
+        button.textContent = '✓ Copiado!';
+        button.classList.add('copied');
+        
+        setTimeout(() => {
+          button.textContent = originalText;
+          button.classList.remove('copied');
+        }, 2000);
+      } catch (err) {
+        console.error('Error al copiar:', err);
+      }
+    });
+  });
+</script>
+
+<style>
+  .gifts-section {
+    padding: var(--spacing-xl) 0;
+    background-color: var(--color-white);
+  }
+
+  .section-title {
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .gifts-description {
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-lg);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .gifts-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .gift-option {
+    padding: var(--spacing-lg);
+    background-color: var(--color-background);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    text-align: center;
+  }
+
+  .gift-icon {
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .gift-option h3 {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-xl);
+    color: var(--color-secondary);
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .gift-subtitle {
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-md);
+    font-weight: 500;
+  }
+
+  .bank-details {
+    padding: var(--spacing-md);
+    background-color: var(--color-white);
+    border-radius: var(--border-radius);
+    margin-bottom: var(--spacing-md);
+    text-align: left;
+  }
+
+  .transfer-section {
+    padding-bottom: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+    border-bottom: 1px solid rgba(139, 115, 85, 0.2);
+  }
+
+  .transfer-section:last-child {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    border-bottom: none;
+  }
+
+  .transfer-title {
+    font-weight: 600;
+    color: var(--color-secondary);
+    margin-bottom: var(--spacing-xs);
+    font-size: var(--font-size-sm);
+  }
+
+  .bank-details p {
+    margin-bottom: var(--spacing-xs);
+    font-size: var(--font-size-sm);
+    color: var(--color-text);
+  }
+
+  .bank-details p:last-child {
+    margin-bottom: 0;
+  }
+
+  .copy-btn {
+    width: 100%;
+  }
+
+  .copy-btn.copied {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border-color: var(--color-primary);
+  }
+
+  .gifts-thanks {
+    margin-top: var(--spacing-lg);
+    font-family: var(--font-heading);
+    font-size: var(--font-size-xl);
+    color: var(--color-secondary);
+  }
+
+  @media (min-width: 768px) {
+    .gifts-container {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>

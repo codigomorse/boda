@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2c1810;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a0f0a;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#bg)"/>
+  <circle cx="960" cy="400" r="150" fill="#d4a574" opacity="0.3"/>
+  <text x="960" y="420" font-family="serif" font-size="24" fill="#d4a574" text-anchor="middle" opacity="0.5">PLACEHOLDER</text>
+  <text x="960" y="450" font-family="serif" font-size="16" fill="#d4a574" text-anchor="middle" opacity="0.5">Reemplazar con foto de los novios</text>
+  <text x="960" y="700" font-family="serif" font-size="36" fill="#ffffff" text-anchor="middle" opacity="0.3">✦</text>
+  <text x="800" y="800" font-family="serif" font-size="24" fill="#ffffff" text-anchor="middle" opacity="0.2">28 de Noviembre de 2026</text>
+</svg>

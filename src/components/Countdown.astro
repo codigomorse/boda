@@ -1,0 +1,139 @@
+---
+const targetDate = new Date('2026-11-28T16:00:00');
+---
+
+<section id="countdown" class="countdown-section">
+  <div class="container">
+    <h2 class="heading section-title">El Gran Día</h2>
+    <p class="countdown-date">28 de Noviembre de 2026</p>
+    <div class="countdown" data-target={targetDate.toISOString()}>
+      <div class="countdown-item">
+        <span class="countdown-number" id="days">00</span>
+        <span class="countdown-label">Días</span>
+      </div>
+      <div class="countdown-separator">:</div>
+      <div class="countdown-item">
+        <span class="countdown-number" id="hours">00</span>
+        <span class="countdown-label">Horas</span>
+      </div>
+      <div class="countdown-separator">:</div>
+      <div class="countdown-item">
+        <span class="countdown-number" id="minutes">00</span>
+        <span class="countdown-label">Minutos</span>
+      </div>
+      <div class="countdown-separator">:</div>
+      <div class="countdown-item">
+        <span class="countdown-number" id="seconds">00</span>
+        <span class="countdown-label">Segundos</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function updateCountdown() {
+    const countdown = document.querySelector('.countdown') as HTMLElement;
+    if (!countdown) return;
+
+    const targetDate = new Date(countdown.dataset.target || '').getTime();
+    const now = new Date().getTime();
+    const distance = targetDate - now;
+
+    if (distance < 0) {
+      countdown.innerHTML = '<p class="countdown-ended">¡Ya nos casamos!</p>';
+      return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById('days')!.textContent = days.toString().padStart(2, '0');
+    document.getElementById('hours')!.textContent = hours.toString().padStart(2, '0');
+    document.getElementById('minutes')!.textContent = minutes.toString().padStart(2, '0');
+    document.getElementById('seconds')!.textContent = seconds.toString().padStart(2, '0');
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+</script>
+
+<style>
+  .countdown-section {
+    padding: var(--spacing-xl) 0;
+    background-color: var(--color-background);
+    text-align: center;
+  }
+
+  .section-title {
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .countdown-date {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .countdown {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-xs);
+  }
+
+  .countdown-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 60px;
+  }
+
+  .countdown-number {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    color: var(--color-secondary);
+    line-height: 1;
+  }
+
+  .countdown-label {
+    font-size: var(--font-size-xs);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--color-text-light);
+    margin-top: var(--spacing-xs);
+  }
+
+  .countdown-separator {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .countdown-ended {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-xl);
+    color: var(--color-primary);
+  }
+
+  @media (min-width: 768px) {
+    .countdown {
+      gap: var(--spacing-sm);
+    }
+
+    .countdown-item {
+      min-width: 80px;
+    }
+
+    .countdown-number {
+      font-size: 3.5rem;
+    }
+
+    .countdown-separator {
+      font-size: 2.5rem;
+    }
+  }
+</style>

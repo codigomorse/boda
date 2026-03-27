@@ -1,0 +1,42 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="container text-center">
+    <p class="footer-message">
+      <span class="heading">Nombre & Nombre</span>
+    </p>
+    <p class="footer-date">28 de Noviembre de 2026</p>
+    <p class="footer-copyright">
+      © {currentYear} Nuestra Boda. Hecho con ♥
+    </p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    padding: var(--spacing-lg) 0;
+    background-color: var(--color-secondary);
+    color: var(--color-white);
+  }
+
+  .footer-message {
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .footer-message span {
+    font-size: var(--font-size-xl);
+  }
+
+  .footer-date {
+    font-size: var(--font-size-sm);
+    opacity: 0.8;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .footer-copyright {
+    font-size: var(--font-size-xs);
+    opacity: 0.6;
+  }
+</style>

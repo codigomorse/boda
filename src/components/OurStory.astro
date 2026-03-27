@@ -1,0 +1,39 @@
+---
+const story = {
+  title: "Nuestra Historia",
+  text: "Daniela y Omar empezaron siendo compañeros de trabajo… y terminaron siendo compañeros de vida (y de caos). Entre pandemia, locuras, mudanzas, sueños compartidos, varios gatos y perros que completan el equipo, fueron armando su propia aventura. Con Guillermina como parte fundamental de esta hermosa banda, aprendieron que juntos todo es mejor… y más divertido. Hoy celebran el amor y se animan a escribir el próximo capítulo."
+};
+---
+
+<section id="history" class="story-section">
+  <div class="container">
+    <h2 class="heading section-title text-center">{story.title}</h2>
+    <div class="story-content">
+      <p>{story.text}</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .story-section {
+    padding: var(--spacing-xl) 0;
+    background-color: var(--color-background);
+  }
+
+  .section-title {
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .story-content {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .story-content p {
+    font-size: var(--font-size-md);
+    color: var(--color-text);
+    line-height: 1.8;
+  }
+</style>

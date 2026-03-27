@@ -1,0 +1,80 @@
+---
+const location = {
+  name: "La Paz, Canelones",
+  address: "La Paz, Canelones, Uruguay",
+  mapsUrl: "https://www.google.com/maps/search/La+Paz+Canelones+Uruguay",
+  time: "16:00 horas"
+};
+---
+
+<section id="location" class="location-section">
+  <div class="container">
+    <h2 class="heading section-title text-center">Ubicación</h2>
+    <div class="location-card">
+      <div class="location-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+          <circle cx="12" cy="10" r="3"></circle>
+        </svg>
+      </div>
+      <h3 class="location-name">{location.name}</h3>
+      <p class="location-address">{location.address}</p>
+      <p class="location-time">Hora: {location.time}</p>
+      <a 
+        href={location.mapsUrl} 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        class="btn btn-outline"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="3 11 22 2 13 21 11 13 3 11"></polygon>
+        </svg>
+        Cómo llegar
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .location-section {
+    padding: var(--spacing-xl) 0;
+    background-color: var(--color-white);
+  }
+
+  .section-title {
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .location-card {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: var(--spacing-lg);
+    background-color: var(--color-background);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    text-align: center;
+  }
+
+  .location-icon {
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .location-name {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-xl);
+    color: var(--color-secondary);
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .location-address {
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .location-time {
+    font-weight: 500;
+    margin-bottom: var(--spacing-md);
+  }
+</style>

@@ -1,0 +1,39 @@
+---
+const dressCode = {
+  title: "Código de Vestimenta",
+  description: "Elegante / Formal",
+  colorsMessage: "Queremos una boda llena de colores, dejen el blanco para la novia"
+};
+---
+
+<section id="dresscode" class="dresscode-section">
+  <div class="container">
+    <h2 class="heading section-title text-center">{dressCode.title}</h2>
+    <p class="dresscode-description text-center">{dressCode.description}</p>
+    <p class="dresscode-colors text-center">{dressCode.colorsMessage}</p>
+  </div>
+</section>
+
+<style>
+  .dresscode-section {
+    padding: var(--spacing-xl) 0;
+    background-color: var(--color-white);
+  }
+
+  .section-title {
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .dresscode-description {
+    color: var(--color-text-light);
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .dresscode-colors {
+    font-size: var(--font-size-md);
+    color: var(--color-secondary);
+    font-style: italic;
+  }
+</style>

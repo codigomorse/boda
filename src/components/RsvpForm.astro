@@ -1,0 +1,195 @@
+---
+const googleFormUrl = "https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform";
+---
+
+<section id="rsvp" class="rsvp-section">
+  <div class="container">
+    <h2 class="heading section-title text-center">Confirmación de Asistencia</h2>
+    <p class="rsvp-description text-center">
+      Por favor, confirma tu asistencia antes del 15 de Noviembre de 2026
+    </p>
+    
+    <div class="rsvp-form-container">
+      <form 
+        id="rsvp-form" 
+        class="rsvp-form"
+        action={googleFormUrl}
+        method="POST"
+        target="_blank"
+      >
+        <div class="form-group">
+          <label for="name">Nombre completo *</label>
+          <input 
+            type="text" 
+            id="name" 
+            name="entry.123456789" 
+            required 
+            placeholder="Tu nombre y apellido"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email (opcional)</label>
+          <input 
+            type="email" 
+            id="email" 
+            name="entry.123456790" 
+            placeholder="tu@email.com"
+          />
+        </div>
+
+        <div class="form-group">
+          <label>¿Asistirás a la boda? *</label>
+          <div class="radio-group">
+            <label class="radio-label">
+              <input type="radio" name="entry.123456791" value="si" required />
+              <span class="radio-custom"></span>
+              ¡Con gusto asistiré!
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="entry.123456791" value="no" />
+              <span class="radio-custom"></span>
+              No podré asistir
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="dietary">Restricciones alimentarias (opcional)</label>
+          <textarea 
+            id="dietary" 
+            name="entry.123456793" 
+            rows="3"
+            placeholder="Vegetariano, vegano, alergias, etc."
+          ></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Mensaje para los novios (opcional)</label>
+          <textarea 
+            id="message" 
+            name="entry.123456794" 
+            rows="3"
+            placeholder="¡Felicidades! ¡Les deseos mucha felicidad!"
+          ></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary submit-btn">
+          Confirmar Asistencia
+        </button>
+      </form>
+
+      <p class="rsvp-note">
+        <small>También puedes confirmar enviando un mensaje directo a los novios.</small>
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .rsvp-section {
+    padding: var(--spacing-xl) 0;
+    background-color: var(--color-background);
+  }
+
+  .section-title {
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .rsvp-description {
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .rsvp-form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: var(--spacing-lg);
+    background-color: var(--color-white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+  }
+
+  .form-group {
+    margin-bottom: var(--spacing-md);
+  }
+
+  .form-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: var(--spacing-xs);
+    color: var(--color-text);
+  }
+
+  .form-group input[type="text"],
+  .form-group input[type="email"],
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: var(--spacing-sm);
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    font-family: var(--font-body);
+    font-size: var(--font-size-sm);
+    transition: border-color 0.3s ease;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+  }
+
+  .radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+
+  .radio-label {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    cursor: pointer;
+    font-weight: 400;
+  }
+
+  .radio-label input[type="radio"] {
+    display: none;
+  }
+
+  .radio-custom {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--color-primary);
+    border-radius: 50%;
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .radio-label input[type="radio"]:checked + .radio-custom::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    background-color: var(--color-primary);
+    border-radius: 50%;
+  }
+
+  .submit-btn {
+    width: 100%;
+    padding: var(--spacing-md);
+    font-size: var(--font-size-md);
+  }
+
+  .rsvp-note {
+    text-align: center;
+    margin-top: var(--spacing-md);
+    color: var(--color-text-light);
+  }
+</style>
